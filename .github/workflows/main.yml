@@ -1,10 +1,10 @@
-name: Bump version
+name: Create tag on push
 on:
   push:
     branches:
       - develop
 jobs:
-  build:
+  create-tag-on-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
