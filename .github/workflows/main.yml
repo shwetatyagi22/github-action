@@ -25,14 +25,12 @@ jobs:
     needs: github-tag-create
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: CupOfTea696/gh-action-auto-release@v1.0.2
-        with:
-          title: "Release: $version"
-          tag: "v$semver"
-          draft: false
-          regex: "/^release: v(.*)$/i"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      steps:
+        - uses: actions/checkout@v2
+        - uses: CupOfTea696/gh-action-auto-release@v1.0.0
+          with:
+            title: "Release: $version"
+            tag: "v$semver"
+            draft: false
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
