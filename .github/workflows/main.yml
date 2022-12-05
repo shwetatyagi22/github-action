@@ -22,6 +22,7 @@ jobs:
           WITH_V: false
           
   github-tag-release:
+    needs: github-tag-create
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
