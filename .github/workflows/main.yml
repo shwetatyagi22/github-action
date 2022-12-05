@@ -1,18 +1,14 @@
-name: Combine action-autotag with additional-tags-action
-
+name: Bump version
 on:
   push:
     branches:
-      - develop
-
+      - master
 jobs:
-  tag-action:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - uses: valitydev/action-autotag@v1
-
-      - uses: vweevers/additional-tags-action@v1
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        uses: wiktorj/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
