@@ -1,18 +1,19 @@
-name: Create tag on push
+name: Combine action-autotag with additional-tags-action
+
 on:
   push:
     branches:
-      - develop
+      - master
+      - main
+
 jobs:
-  create-tag-on-push:
+  tag-action:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
 
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: false
+      - uses: valitydev/action-autotag@v1
+
+      - uses: vweevers/additional-tags-action@v1
